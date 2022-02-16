@@ -1,0 +1,20 @@
+PODS:
+  - GPUImage (0.1.7)
+  - OpenCV (4.3.0)
+
+DEPENDENCIES:
+  - GPUImage
+  - OpenCV
+
+SPEC REPOS:
+  trunk:
+    - GPUImage
+    - OpenCV
+
+SPEC CHECKSUMS:
+  GPUImage: 733a5f0fab92df9de1c37ba9df520a833ccb406d
+  OpenCV: 681e0451c1e54c5930a8922277f817ed5d5ab459
+
+PODFILE CHECKSUM: 9b39701c55c45f097f4e6135220d504717e2d3b2
+
+COCOAPODS: 1.11.2

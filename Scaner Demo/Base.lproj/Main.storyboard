@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fVl-hD-Sig">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Capture Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CaptureController" customModule="Scaner_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O5n-Vu-0CS" customClass="PreviewView" customModule="Scaner_Demo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="771"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="23G-MX-P2S">
+                                        <rect key="frame" x="20" y="69" width="32" height="38"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain">
+                                            <imageReference key="image" image="lightbulb" catalog="system" symbolScale="large"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="toggleFlashlight:" destination="BYZ-38-t0r" eventType="touchUpInside" id="58q-8h-DOB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sCW-Js-skq">
+                                <rect key="frame" x="100" y="801" width="214" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Shot!"/>
+                                <connections>
+                                    <action selector="captureAction:" destination="BYZ-38-t0r" eventType="touchDown" id="HAk-Al-mQ3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="sCW-Js-skq" firstAttribute="top" secondItem="O5n-Vu-0CS" secondAttribute="bottom" constant="30" id="4jO-LA-N4K"/>
+                            <constraint firstItem="O5n-Vu-0CS" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MSZ-gc-C7c"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="sCW-Js-skq" secondAttribute="bottom" constant="30" id="PqZ-uA-qaX"/>
+                            <constraint firstItem="O5n-Vu-0CS" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="S4z-zk-kfp"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="sCW-Js-skq" secondAttribute="trailing" constant="100" id="Stp-oS-41s"/>
+                            <constraint firstItem="sCW-Js-skq" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="100" id="Vn3-7x-5sM"/>
+                            <constraint firstItem="O5n-Vu-0CS" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="m1H-nc-cFJ"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="vWp-Mz-doP"/>
+                    <connections>
+                        <outlet property="flashlightButton" destination="23G-MX-P2S" id="k2y-mX-A5G"/>
+                        <outlet property="previewView" destination="O5n-Vu-0CS" id="P94-6k-Bbp"/>
+                        <outlet property="shotButton" destination="sCW-Js-skq" id="WSK-ik-lNR"/>
+                        <segue destination="41L-P6-eHI" kind="show" identifier="OpenCVSegue" id="ZjB-cO-Vhr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111.59420289855073" y="97.767857142857139"/>
+        </scene>
+        <!--OpenCV Controller-->
+        <scene sceneID="vue-he-Jms">
+            <objects>
+                <viewController id="41L-P6-eHI" customClass="OpenCVController" customModule="Scaner_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="I08-6K-BuJ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Mkl-Le-xdK">
+                                <rect key="frame" x="0.0" y="88" width="414" height="683"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V0t-Vf-lz2">
+                                <rect key="frame" x="100" y="801" width="214" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Switch"/>
+                                <connections>
+                                    <action selector="switchImage:" destination="41L-P6-eHI" eventType="touchUpInside" id="ISj-JG-EVn"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ezp-G8-H4g"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ezp-G8-H4g" firstAttribute="trailing" secondItem="Mkl-Le-xdK" secondAttribute="trailing" id="1z7-FM-ZO5"/>
+                            <constraint firstItem="V0t-Vf-lz2" firstAttribute="top" secondItem="Mkl-Le-xdK" secondAttribute="bottom" constant="30" id="VJA-xU-ffQ"/>
+                            <constraint firstItem="Mkl-Le-xdK" firstAttribute="leading" secondItem="ezp-G8-H4g" secondAttribute="leading" id="jPM-82-MUx"/>
+                            <constraint firstItem="ezp-G8-H4g" firstAttribute="bottom" secondItem="V0t-Vf-lz2" secondAttribute="bottom" constant="30" id="joe-TB-VIS"/>
+                            <constraint firstItem="Mkl-Le-xdK" firstAttribute="top" secondItem="ezp-G8-H4g" secondAttribute="top" id="qDI-oY-uFG"/>
+                            <constraint firstItem="V0t-Vf-lz2" firstAttribute="leading" secondItem="ezp-G8-H4g" secondAttribute="leading" constant="100" id="uKq-AP-7ta"/>
+                            <constraint firstItem="ezp-G8-H4g" firstAttribute="trailing" secondItem="V0t-Vf-lz2" secondAttribute="trailing" constant="100" id="zaD-5T-WkU"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZdU-q1-eHu">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="nhh-4d-4rQ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="TFa-6R-wZv">
+                                <rect key="frame" x="302" y="5" width="92" height="34.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Next"/>
+                                <connections>
+                                    <action selector="nextFilter:" destination="41L-P6-eHI" eventType="touchUpInside" id="IO7-GM-3SS"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <segue destination="7Rk-jX-UJt" kind="show" identifier="GPUImageSegue" id="5Hi-xD-QzY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="imageView" destination="Mkl-Le-xdK" id="ais-3b-iXj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="upn-mP-6Fb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="954" y="98"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JQ4-ZV-6va">
+            <objects>
+                <navigationController id="fVl-hD-Sig" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dBJ-21-ZWN">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Mr5-Jm-gJL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KLV-XA-SJY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-710" y="98"/>
+        </scene>
+        <!--Image Controller-->
+        <scene sceneID="sps-2Z-tas">
+            <objects>
+                <viewController id="7Rk-jX-UJt" customClass="GPUImageController" customModule="Scaner_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fg7-8H-6Nk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.25" minValue="0.0" maxValue="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="cST-qP-JhA">
+                                <rect key="frame" x="48" y="807" width="318" height="31"/>
+                                <connections>
+                                    <action selector="repixellateImage:" destination="7Rk-jX-UJt" eventType="valueChanged" id="FSr-X5-aqP"/>
+                                </connections>
+                            </slider>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Ox-Xy-0g6">
+                                <rect key="frame" x="0.0" y="88" width="414" height="694"/>
+                            </imageView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ask-j1-Bk6"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="cST-qP-JhA" firstAttribute="leading" secondItem="ask-j1-Bk6" secondAttribute="leading" constant="50" id="Q0p-ZS-dDT"/>
+                            <constraint firstItem="cST-qP-JhA" firstAttribute="top" secondItem="2Ox-Xy-0g6" secondAttribute="bottom" constant="25" id="Yw9-h2-ttQ"/>
+                            <constraint firstItem="2Ox-Xy-0g6" firstAttribute="top" secondItem="ask-j1-Bk6" secondAttribute="top" id="e7n-oS-pkv"/>
+                            <constraint firstItem="ask-j1-Bk6" firstAttribute="trailing" secondItem="cST-qP-JhA" secondAttribute="trailing" constant="50" id="paC-H0-KEj"/>
+                            <constraint firstItem="ask-j1-Bk6" firstAttribute="trailing" secondItem="2Ox-Xy-0g6" secondAttribute="trailing" id="q9h-bw-b6g"/>
+                            <constraint firstItem="2Ox-Xy-0g6" firstAttribute="leading" secondItem="ask-j1-Bk6" secondAttribute="leading" id="qc9-mp-Tg6"/>
+                            <constraint firstItem="ask-j1-Bk6" firstAttribute="bottom" secondItem="cST-qP-JhA" secondAttribute="bottom" constant="25" id="uBq-wb-Poq"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="7at-02-dwF"/>
+                    <connections>
+                        <outlet property="imageView" destination="2Ox-Xy-0g6" id="XdZ-cc-Gak"/>
+                        <outlet property="pixellateSlider" destination="cST-qP-JhA" id="cOq-rm-vsp"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="fUQ-H4-vS3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1779.7101449275365" y="97.767857142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="lightbulb" catalog="system" width="113" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
